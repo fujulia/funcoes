@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        body{
+            background-color: rgb(180, 227, 255);
+        }
+
+        section{
+            width: 800px;
+            margin: auto;
+            margin-top: 200px;
+        }
+        form{
+            background-color: rgb(253, 253, 248);
+            border: 1px solid;
+        }
+
+        form div{
+            margin: 10px;
+        }
+
+        h1{
+            font-size: 25px;
+        }
+
+        label{
+            font-size: 18px;
+        }
+
+        input{
+            border: none;
+            border-bottom: 1px solid;
+        }
+
+        #botoes input{
+            font-size: 17px;
+            padding: 5px;
+            margin: 0 0 0 5px;
+            border-bottom: none;
+            cursor: pointer;
+        }
+
+        #clas, #imc{
+            border-bottom: 1px solid black;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+
+        function click_calcular() {
+            let soma = 0
+            let massa = document.getElementById("txtValorMassa").value;
+            let altura = document.getElementById("txtValorAltura").value;
+            if (massa == "") {
+                alert("Informe a massa");
+            } else if (altura == "") {
+                alert("Informe a altura");
+            } else {
+                soma = (Number(massa)) / (Number(altura) ** 2);
+                document.getElementById("imc").value = soma.toFixed(2);
+            }
+            if (soma < 18.5) {
+                document.getElementById("clas").value = "Baixo peso";
+                document.getElementById("clas").style.color = "red";
+            }
+            else if (18.5 <= soma && soma <= 24.9) {
+                document.getElementById("clas").value = "Peso normal";
+                document.getElementById("clas").style.color = "green";
+            }
+            else if (25 <= soma && soma <= 29.9) {
+                document.getElementById("clas").value = "Sobrepeso";
+                document.getElementById("clas").style.color = "red";
+            }
+            else if (30 <= soma && soma <= 34.9) {
+                document.getElementById("clas").value = "Obesidade grau I";
+                document.getElementById("clas").style.color = "red";
+            }
+            else if (35 <= soma && soma <= 39.9) {
+                document.getElementById("clas").value = "Obesidade grau II";
+                document.getElementById("clas").style.color = "red";
+            }
+            else {
+                document.getElementById("clas").value = "Obesidade grau III";
+                document.getElementById("clas").style.color = "red";
+            }
+        }
+
+        function click_limpar() {
+            document.getElementById("txtValorMassa").value = "";
+            document.getElementById("txtValorAltura").value = "";
+            document.getElementById("imc").value = "";
+            document.getElementById("clas").value = "";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    
+    <section>
+    <h1>CALCULAR IMC</h1>
+    <form>
+        <div>
+            <label for="txtValorA">Informe sua massa:</label>
+            <input type="number" name="" id="txtValorMassa" value="1">
+        </div>
+        <div>
+            <label for="txtValorB">Informe sua altura:</label>
+            <input type="number" name="" id="txtValorAltura" value="1">
+        </div>
+        <div>
+            <label for="imc">IMC:</label>
+            <input type="number" name="" id="imc" disabled>
+        </div>
+        <div>
+            <label for="clas">Classificação:</label>
+            <input type="text" name="" id="clas" disabled>
+        </div>
+        <div id="botoes">
+            <input type="button" value="Calcular" onclick="click_calcular();">
+            <input type="button" value="Limpar" onclick="click_limpar();">
+        </div>
+    </form>
+    </section>
+
+</body>
+
+</html>
